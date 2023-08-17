@@ -52,7 +52,7 @@ export default function OutlinedCard() {
           <Container maxWidth="xl" sx={{  }}>
             <Card
               variant="outlined"
-              sx={{ bgcolor: "background.main", borderRadius: 5, padding: 2 }}
+              sx={{ bgcolor: "background2.main", borderRadius: 5, padding: 2 }}
             >
               {card}
             </Card>
