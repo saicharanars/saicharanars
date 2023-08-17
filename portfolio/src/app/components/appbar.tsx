@@ -69,8 +69,8 @@ const outerTheme = createTheme({
     onerrorcontainer: {
         main: "#410E0B"
     },
-    background: {
-        main: "#FFFFFF",
+    background2: {
+        main: "#ffffff",
     },
     onbackground: {
         main: "#1C1B1F",
@@ -138,7 +138,7 @@ export default function DrawerAppBar(props: Props) {
 
     <Box sx={{ display: 'flex',bgcolor:'primarycontainer.main',paddingX:2,margin:2 }}>
       <CssBaseline />
-      <AppBar component="nav" sx={{bgcolor:'background.main',paddingX:2,  }}>
+      <AppBar component="nav" sx={{bgcolor:'background2.main',paddingX:2,  }}>
         <Toolbar>
           <IconButton
             color="inherit"
