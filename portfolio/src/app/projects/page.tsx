@@ -184,8 +184,9 @@ export default function Projects() {
     <>
       <ThemeProvider theme={Theme}>
         <Grid container padding={2} spacing={1}>
-          {projects.map((item) => (
+          {projects.map((item,index) => (
             <Grid
+            key={index}
               item
               xs={12}
               md={10}
@@ -223,8 +224,9 @@ export default function Projects() {
                     divider={<Divider orientation="vertical" flexItem />}
                     spacing={1}
                   >
-                    {item.skills.map((skill) => (
+                    {item.skills.map((skill,index) => (
                       <Chip
+                      key={index}
                         label={skill}
                         color="primary"
                         size="small"
@@ -272,7 +274,7 @@ export default function Projects() {
                           </List>
 
                           {bullet.details.map((detail, index) => (
-                            <List>
+                            <List key={index}>
                               <ListItem>
                                 <ListItemText key={index} primary={detail} />
                               </ListItem>

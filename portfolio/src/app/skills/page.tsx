@@ -30,9 +30,6 @@ import IconButton from "@mui/material/IconButton";
 import LinkIcon from "@mui/icons-material/Link";
 import Link from "next/link";
 
-
-
-
 const skills = [
   {
     name: "programming Languages",
@@ -66,39 +63,30 @@ export default function Skills() {
   return (
     <>
       <ThemeProvider theme={Theme}>
-        
-              <Grid container spacing={2} margin={2}>
-                {
-                    skills.map((skill)=>(
-                        <Grid item xs={12} md={5}>
-                    <Card sx={{
-                        borderRadius:3
-                    }}>
-                        <CardContent>
-                            <Typography variant="h6" color="primary">
-                                {skill.name}
-                            </Typography>
-                            <List>
-
-                            
-                            {
-                                skill.Skills.map((item)=>(
-                                    <ListItem>
-                                        <ListItemText primary={item}/>
-                                    </ListItem>
-                                ))
-                            }
-                            </List>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                    ))
-                }
-                
-                
-                
-              </Grid>
-         
+        <Grid container spacing={2} margin={2}>
+          {skills.map((skill, index) => (
+            <Grid item xs={12} md={5} key={index}>
+              <Card
+                sx={{
+                  borderRadius: 3,
+                }}
+              >
+                <CardContent>
+                  <Typography key={index} variant="h6" color="primary">
+                    {skill.name}
+                  </Typography>
+                  <List>
+                    {skill.Skills.map((item, index) => (
+                      <ListItem key={index}>
+                        <ListItemText primary={item} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </ThemeProvider>
     </>
   );

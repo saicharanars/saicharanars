@@ -34,18 +34,90 @@ import Link from "next/link";
 // Accessing individual features and their details
 
 export default function Repos() {
-  const [data, setData] = useState([]);
-  const url = "https://api.github.com/users/saicharanars/repos";
-  const fetchInfo = () => {
-    return fetch(url)
-      .then((res) => res.json())
-      .then((d) => setData(d));
-  };
+  
+  
 
-  useEffect(() => {
-    fetchInfo();
-  }, []);
-  console.log(data);
+const data=[
+  {
+    name: '3hrsjsproject',
+    url: 'https://github.com/saicharanars/3hrsjsproject'
+  },
+  { name: 'apicalls', url: 'https://github.com/saicharanars/apicalls' },
+  {
+    name: 'booking-appointment',
+    url: 'https://github.com/saicharanars/booking-appointment'
+  },
+  {
+    name: 'create-react-app-lambda',
+    url: 'https://github.com/saicharanars/create-react-app-lambda'
+  },
+  {
+    name: 'dom-manipulations',
+    url: 'https://github.com/saicharanars/dom-manipulations'
+  },
+  { name: 'erf', url: 'https://github.com/saicharanars/erf' },
+  {
+    name: 'expense-tracker',
+    url: 'https://github.com/saicharanars/expense-tracker'
+  },
+  {
+    name: 'express-js-dynamic-routes',
+    url: 'https://github.com/saicharanars/express-js-dynamic-routes'
+  },
+  {
+    name: 'expressjs',
+    url: 'https://github.com/saicharanars/expressjs'
+  },
+  {
+    name: 'group-talk',
+    url: 'https://github.com/saicharanars/group-talk'
+  },
+  {
+    name: 'kickstartingnodejs',
+    url: 'https://github.com/saicharanars/kickstartingnodejs'
+  },
+  { name: 'leetcode', url: 'https://github.com/saicharanars/leetcode' },
+  {
+    name: 'myfirstgit',
+    url: 'https://github.com/saicharanars/myfirstgit'
+  },
+  { name: 'mytask', url: 'https://github.com/saicharanars/mytask' },
+  {
+    name: 'nextjs-blog-theme',
+    url: 'https://github.com/saicharanars/nextjs-blog-theme'
+  },
+  {
+    name: 'restaurant-booking',
+    url: 'https://github.com/saicharanars/restaurant-booking'
+  },
+  {
+    name: 'saicharanars',
+    url: 'https://github.com/saicharanars/saicharanars'
+  },
+  {
+    name: 'sharpener-web-module',
+    url: 'https://github.com/saicharanars/sharpener-web-module'
+  },
+  {
+    name: 'sharpenerwebmodule',
+    url: 'https://github.com/saicharanars/sharpenerwebmodule'
+  },
+  {
+    name: 'simplechat',
+    url: 'https://github.com/saicharanars/simplechat'
+  },
+  { name: 'tusk', url: 'https://github.com/saicharanars/tusk' },
+  {
+    name: 'typescript-todos',
+    url: 'https://github.com/saicharanars/typescript-todos'
+  },
+  {
+    name: 'Working-with-NoSQL-Using-MongoDB',
+    url: 'https://github.com/saicharanars/Working-with-NoSQL-Using-MongoDB'
+  }
+]
+
+
   
   return (
     <>
@@ -69,9 +141,9 @@ export default function Repos() {
                 
                 <ListItem key={index}>
                   <ListItemText primary={item.name}   />
-                  <a href={item.html_url}>
+                  <a href={item.url}>
 
-                  <ListItemText primary={item.html_url}   />
+                  <ListItemText  primary={item.url}   />
                   </a>
 
 

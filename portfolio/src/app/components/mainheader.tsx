@@ -30,7 +30,7 @@ const card = (
         }}
       >
         <Image
-          src="https://pub-ef97786f25314ec9b46b42f7f3d8ba65.r2.dev/sai charan.png"
+          src="https://pub-ef97786f25314ec9b46b42f7f3d8ba65.r2.dev/sai-charan.png"
           alt="Sai Charan Arishanapally"
           sizes="10vw"
           quality={50}
@@ -40,6 +40,7 @@ const card = (
     </Stack>
   </React.Fragment>
 );
+
 const desc = (
   <React.Fragment>
     <Box>
@@ -48,19 +49,16 @@ const desc = (
           bgcolor: "background.paper",
         }}
       >
-        <Typography variant="h6" component="div" >
-        Hello there! I'm Sai Charan Arishanapally, a dedicated backend developer with a laser focus on crafting APIs that stand the test of scalability. My passion lies in designing and building robust, high-performance API solutions that power modern web applications and drive business success.
+        <Typography variant="h6" component="div">
+          Hello there! I&apos;m Sai Charan Arishanapally, a dedicated backend developer with a laser focus on crafting APIs that stand the test of scalability. My passion lies in designing and building robust, high-performance API solutions that power modern web applications and drive business success.
         </Typography>
-      <Typography variant="h6" component="div">
-
-      With a foundation in Node.js, Express.js, and a wealth of experience in JavaScript and TypeScript, I've fine-tuned my skills to create APIs that not only meet today's demands but also lay the groundwork for the future. I understand that scalability isn't just about handling current traffic; it's about preparing your application for growth and heavy loads.
-      </Typography>
-      <Typography variant="h6" component="div">
-      My journey into the world of databases includes MongoDB, MySQL, and PostgreSQL. Leveraging the power of MongooseJS and Sequelize, I design data structures that accommodate expansion without compromising on performance. My architecture decisions are driven by a deep understanding of database optimization and efficient query design.
-      </Typography>
-      
+        <Typography variant="h6" component="div">
+          With a foundation in Node.js, Express.js, and a wealth of experience in JavaScript and TypeScript, I&apos;ve fine-tuned my skills to create APIs that not only meet today&apos;s demands but also lay the groundwork for the future. I understand that scalability isn&apos;t just about handling current traffic; it&apos;s about preparing your application for growth and heavy loads.
+        </Typography>
+        <Typography variant="h6" component="div">
+          My journey into the world of databases includes MongoDB, MySQL, and PostgreSQL. Leveraging the power of MongooseJS and Sequelize, I design data structures that accommodate expansion without compromising on performance. My architecture decisions are driven by a deep understanding of database optimization and efficient query design.
+        </Typography>
       </CardContent>
-
     </Box>
   </React.Fragment>
 );

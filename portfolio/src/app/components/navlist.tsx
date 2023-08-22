@@ -56,7 +56,7 @@ export default function SelectedListItem() {
             
         }}>
           {navitems.map((item, index) => (
-            <Link href={item.href}>
+            <Link key={index} href={item.href}>
             <ListItemButton
               key={index}
               selected={selectedIndex === index}
