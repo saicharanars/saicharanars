@@ -1,108 +1,99 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
-import InfoIcon from '@mui/icons-material/Info';
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack"
 
-
-import {ProjectIcon, PersonIcon, StackIcon,RepoIcon ,ToolsIcon} from '@primer/octicons-react'
-
-
+import Theme from "@/app/components/theme";
+import {  ThemeProvider } from "@mui/material/styles";
+import Link from 'next/link'
+import {
+  ProjectIcon,
+  PersonIcon,
+  StackIcon,
+  RepoIcon,
+  
+} from "@primer/octicons-react";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import MailIcon from "@mui/icons-material/Mail";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import  Container  from "@mui/material/Container";
 
 export default function SelectedListItem() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  
-
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number,
+    index: number
   ) => {
     setSelectedIndex(index);
   };
-  const navitems=[{nav:'About',icon:PersonIcon},{nav:'Projects',icon:ProjectIcon},{nav:'skills',icon:StackIcon},{nav:'Repositories',icon:RepoIcon},{nav:'Resume',icon:ArticleOutlinedIcon},{nav:'Contact',icon:ContactPageOutlinedIcon}];
+  const navitems = [
+    { nav: "About", icon: PersonIcon,href:"/" },
+    { nav: "Projects", icon: ProjectIcon,href:"/projects" },
+    { nav: "skills", icon: StackIcon,href:"/skills" },
+    { nav: "Repositories", icon: RepoIcon,href:"/repositories" },
+    
+  ];
 
   return (
-    <Box sx={{ width: '100%', height:'100%' , bgcolor: 'onprimary.main',padding:1,margin:1,borderRadius:4, }}>
-      <List component="nav" aria-label="main mailbox folders">
-        {navitems.map((item,index)=>(
+    <ThemeProvider theme={Theme}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          bgcolor: "info.main",
+          padding: 1,
+          margin: 1,
+          borderRadius: 4,
+        }}
+      >
+        <List component="nav" aria-label="main mailbox folders" sx={{
+            bgcolor:"info.main",
+            
+        }}>
+          {navitems.map((item, index) => (
+            <Link href={item.href}>
             <ListItemButton
-            selected={selectedIndex === index}
-            onClick={(event) => {
-                handleListItemClick(event, index);
-              
-            }}
-          >
-            <ListItemIcon>
-            <item.icon  size={24} />
-            </ListItemIcon>
-            <ListItemText primary={item.nav} />
-          </ListItemButton>
-        ))}
-        {/* <ListItemButton
-          selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
-        >
-          <ListItemIcon>
-          <PersonIcon  size={24} />
-          </ListItemIcon>
-          <ListItemText primary="About" />
-        </ListItemButton>
-        <ListItemButton
-          selected={selectedIndex === 1}
-          onClick={(event) => handleListItemClick(event, 1)}
-        >
-          <ListItemIcon>
-            <ProjectIcon size={24} />
-          </ListItemIcon>
-          <ListItemText primary="Projects" />
-        </ListItemButton>
-        <ListItemButton
-          selected={selectedIndex === 2}
-          onClick={(event) => handleListItemClick(event, 2)}
-        >
-          <ListItemIcon>
-            <ToolsIcon size={24} />
-          </ListItemIcon>
-          <ListItemText primary="Skills" />
-        </ListItemButton>
-        <ListItemButton
-          selected={selectedIndex === 3}
-          onClick={(event) => handleListItemClick(event, 3)}
-        >
-          <ListItemIcon>
-            <RepoIcon size={24} />
-          </ListItemIcon>
-          <ListItemText primary="repositories" />
-        </ListItemButton>
-        <ListItemButton
-          selected={selectedIndex === 4}
-          onClick={(event) => handleListItemClick(event, 4)}
-        >
-          <ListItemIcon>
-            <ProjectIcon size={24} />
-          </ListItemIcon>
-          <ListItemText primary="Resume" />
-        </ListItemButton>
-        <ListItemButton
-          selected={selectedIndex === 5}
-          onClick={(event) => handleListItemClick(event, 5)}
-        >
-          <ListItemIcon>
-            <ContactPageIcon />
-          </ListItemIcon>
-          <ListItemText primary="Contact" />
-        </ListItemButton> */}
-      </List>
-      
-      
-    </Box>
+              key={index}
+              selected={selectedIndex === index}
+              onClick={(event) => {
+                  handleListItemClick(event, index);
+              }}
+            >
+              <ListItemIcon>
+                <item.icon size={24} />
+              </ListItemIcon>
+              <ListItemText primary={item.nav} />
+            </ListItemButton>
+            </Link>
+          ))}
+          <Container maxWidth="xs">
+        <Stack direction="row" spacing={1}>
+          <a href="mailto:saicharanars@gmail.com" target="_blank">
+            <IconButton aria-label="delete">
+              <MailIcon />
+            </IconButton>
+          </a>
+          <a href="https://www.linkedin.com/in/sai-charan-a-4926ba154/">
+            <IconButton aria-label="delete">
+              <LinkedInIcon />
+            </IconButton>
+          </a>
+          <a href="https://github.com/saicharanars">
+            <IconButton aria-label="delete">
+              <GitHubIcon />
+            </IconButton>
+          </a>
+        </Stack>
+      </Container>
+       
+        
+        </List>
+      </Box>
+    </ThemeProvider>
   );
 }

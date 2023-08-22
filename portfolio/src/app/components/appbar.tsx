@@ -1,98 +1,35 @@
-'use client'
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+"use client";
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Paper from "@mui/material/Paper";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Theme from "@/app/components/theme";
+import {  ThemeProvider } from "@mui/material/styles";
+import {
+  ProjectIcon,
+  PersonIcon,
+  StackIcon,
+  RepoIcon,
+  
+} from "@primer/octicons-react";
+import Link from "next/link";
+import  Container  from "@mui/material/Container";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import MailIcon from "@mui/icons-material/Mail";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 //import { orange } from '@mui/material/colors';
-
-const outerTheme = createTheme({
-  palette: {
-    primary: {
-        main: "#6750A4"
-    },
-    
-    onprimary: {
-        main: "#FFFFFF"
-    },
-    primarycontainer: {
-        main: "#EADDFF"
-    },
-    onprimarycontainer: {
-        main: "#21005D"
-    },
-    secondary: {
-        main: "#625B71"
-    },
-    onsecondary: {
-        main: "#ffffff"
-    },
-    secondarycontainer: {
-        main: "#E8DEF8"
-    },
-    onsecondarycontainer: {
-        main: "#1D192B"
-    },
-    tertiary: {
-        main: "#7D5260"
-    },
-    ontertiary: {
-        main: "#ffffff"
-    },
-    tertiarycontainer: {
-        main: "#FFD8E4"
-    },
-    ontertiarycontainer: {
-        main: "#31111D"
-    },
-    error: {
-        main: "#B3261E"
-    },
-    onerror: {
-        main: "#ffffff"
-    },
-    errorcontainer: {
-        main: "#F9DEDC"
-    },
-    onerrorcontainer: {
-        main: "#410E0B"
-    },
-    background2: {
-        main: "#ffffff",
-    },
-    onbackground: {
-        main: "#1C1B1F",
-    },
-    surface: {
-        main: "#FFFBFE"
-    },
-    onsurface: {
-        main: "#1C1B1F"
-    },
-    outline: {
-        main: "#79747E"
-    },
-    surfacevariant: {
-        main: "#E7E0EC"
-    },
-    onsurfacevariant: {
-        main: "#3f4946"
-    }
-}
-});
-
 
 interface Props {
   /**
@@ -103,88 +40,157 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+// const navItems = ["Home", "About", "Contact"];
+const navitems = [
+  { nav: "About", icon: PersonIcon, href: "/" },
+  { nav: "Projects", icon: ProjectIcon, href: "/projects" },
+  { nav: "skills", icon: StackIcon, href: "/skills" },
+  { nav: "Repositories", icon: RepoIcon, href: "/repositories" },
+];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+    console.log(Theme);
+  };
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography color='primary.main' variant="h6" sx={{ my: 2 }}>
-      Sai Charan Arishanapally
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Typography color="primary.main" variant="h6" sx={{ my: 2 }}>
+        Sai Charan Arishanapally
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem  key={item} disablePadding>
-            <ListItemButton  sx={{ textAlign: 'center' ,color:'onsurface.main'}}>
-              <ListItemText  primary={item} />
+        {navitems.map((item, index) => (
+          <Link href={item.href}>
+            <ListItemButton
+              key={index}
+              selected={selectedIndex === index}
+              onClick={(event) => {
+                handleListItemClick(event, index);
+              }}
+            >
+              <ListItemIcon>
+                <item.icon size={24} />
+              </ListItemIcon>
+              <ListItemText primary={item.nav} />
             </ListItemButton>
-          </ListItem>
+          </Link>
         ))}
       </List>
+      <Container maxWidth="xs">
+        <Stack direction="row" spacing={1}>
+          <a href="mailto:saicharanars@gmail.com" target="_blank">
+            <IconButton aria-label="delete">
+              <MailIcon />
+            </IconButton>
+          </a>
+          <a href="https://www.linkedin.com/in/sai-charan-a-4926ba154/">
+            <IconButton aria-label="delete">
+              <LinkedInIcon />
+            </IconButton>
+          </a>
+          <a href="https://github.com/saicharanars">
+            <IconButton aria-label="delete">
+              <GitHubIcon />
+            </IconButton>
+          </a>
+        </Stack>
+      </Container>
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <ThemeProvider theme={outerTheme}>
-
-    <Box sx={{ display: 'flex',bgcolor:'primarycontainer.main',paddingX:2,margin:2 }}>
-      <CssBaseline />
-      <AppBar component="nav" sx={{bgcolor:'background2.main',paddingX:2,  }}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'block',md:'none' },color:'onsurface.main' }}
-            >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            //color='primary.main'
-            sx={{ flexGrow: 1, display: {  sm: 'block' },color:'onsurface.main' }}
-            >
-            Sai Charan Arishanapally
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-                <Button key={item} sx={{color:'onsurface.main'}}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+    <ThemeProvider theme={Theme}>
+      <Box
+        sx={{
+          display: "flex",
+          bgcolor: "primary.light",
+          paddingX: 2,
+          margin: 2,
+          alignItems: "center",
+          justifyContent: "center",
         }}
-        >
-          {drawer}
-        </Drawer>
+      >
+        <Paper elevation={3} sx={{ bgcolor: "primary.light" }}>
+          <AppBar
+            component="nav"
+            sx={{
+              bgcolor: "background.paper",
+              paddingX: 2,
+              textAlign: "center",
+            }}
+          >
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{
+                  mr: 2,
+                  display: { sm: "block", md: "none" },
+                  color: "background.default",
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+
+              <Typography
+                variant="h5"
+                component="div"
+                //color='primary.main'
+                sx={{
+                  display: { sm: "block", md: "block" },
+                  color: "primary.main",
+                }}
+              >
+                Sai Charan Arishanapally
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        </Paper>
+
+        <Box component="nav">
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: {
+                xs: "block",
+                sm: "block",
+                md: "none",
+                lg: "none",
+                xl: "none",
+              },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Box>
       </Box>
-      
-    </Box>
-        </ThemeProvider>
+    </ThemeProvider>
   );
 }
