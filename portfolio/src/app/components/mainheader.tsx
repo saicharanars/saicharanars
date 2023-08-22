@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Image from "next/image";
+import img from "../../../public/saicharan.png"
 
 const card = (
   <React.Fragment>
@@ -30,7 +31,7 @@ const card = (
         }}
       >
         <Image
-          src="https://pub-ef97786f25314ec9b46b42f7f3d8ba65.r2.dev/sai-charan.png"
+          src={img}
           alt="Sai Charan Arishanapally"
           sizes="10vw"
           quality={50}
