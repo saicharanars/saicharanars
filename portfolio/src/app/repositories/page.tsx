@@ -65,9 +65,9 @@ export default function Repos() {
               Repositories
             </Typography>
             <List>
-              {data.map((item) => (
+              {data.map((item,index) => (
                 
-                <ListItem>
+                <ListItem key={index}>
                   <ListItemText primary={item.name}   />
                   <a href={item.html_url}>
 
